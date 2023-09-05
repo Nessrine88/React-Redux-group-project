@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -6,9 +7,11 @@ import Myprofile from './components/MyProfile/Myprofile';
 import Rockets from './components/Rockets/Rockets';
 import Mission from './components/Mission/Mission';
 
+
 function App() {
   return (
     <div className="App">
+
       <Navigation />
       <Routes>
         <Route path="/Myprofile" element={<Myprofile />} />
@@ -19,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/Rockets" element={<Rockets />} />
       </Routes>
+
     </div>
   );
 }
