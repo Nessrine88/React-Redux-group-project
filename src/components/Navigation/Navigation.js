@@ -11,18 +11,14 @@ const Navigation = () => (
     </div>
     <div className="list">
       <li>
-        <Link to="/" />
-        Rockets
+        <Link to="/Rockets">Rockets</Link>
       </li>
       <li>
-        <Link to="/" />
-        Mission
+        <Link to="/Mission">Mission</Link>
       </li>
       <li className="profile">
-        <Link to="/" />
-        My profile
+        <Link to="/Myprofile">My profile</Link>
       </li>
-
     </div>
   </div>
 );
