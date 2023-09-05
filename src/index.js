@@ -1,14 +1,15 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom/client';
+
 import { Provider } from 'react-redux';
-import App from './components/App'
-import configureStore from './configureStore'
+import store from './redux/store';
 
-const store = configureStore()
+import App from './App';
 
-render(
+// As of React 18
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
-)
+);
