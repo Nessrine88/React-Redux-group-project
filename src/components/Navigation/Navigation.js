@@ -17,7 +17,7 @@ function Navigation() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/mission">
+          <NavLink to="/Mission">
             Mission
           </NavLink>
         </li>
