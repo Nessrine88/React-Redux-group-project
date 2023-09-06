@@ -23,7 +23,6 @@
 .list li {
   list-style: none;
   margin-left: 2rem;
-  
 }
 
 .list a {
@@ -35,8 +34,7 @@
   border-left: 1px solid black;
   padding-left: 0.7rem;
 }
+
 .list a:focus {
   text-decoration: underline;
 }
-
-
