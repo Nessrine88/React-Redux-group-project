@@ -3,6 +3,7 @@
   padding: 2rem;
   margin: 2rem;
 }
+
 .MissionTable td {
   padding: 1rem;
   border: 1px solid gainsboro;
@@ -16,11 +17,10 @@
 
 .MissionDescription {
   width: 60%;
- 
 }
 
 .MissionName {
-  width:15%;
+  width: 15%;
 }
 
 .member button {
@@ -29,6 +29,7 @@
   background-color: gray;
   border-radius: 5px;
 }
+
 .join button {
   border: solid 1px gray;
   color: gray;
@@ -41,5 +42,5 @@
 }
 
 .white-background {
-  background-color: #ffffff;
+  background-color: #fff;
 }
