@@ -23,14 +23,14 @@
   width: 15%;
 }
 
-.member button {
+td .not-a-member-button{
   border: none;
   color: #fff;
   background-color: gray;
   border-radius: 5px;
 }
 
-.join button {
+td .join-mission-button {
   border: solid 1px gray;
   color: gray;
   background-color: #fff;
@@ -48,9 +48,12 @@
 td .active-member-button {
   background-color: #2a6dfd; 
   color: white;
+  border: none;
+  border-radius: 5px;
 }
 
 td .leave-mission-button {
   border: 1px solid red;
   color: rgb(255, 0, 0);
+  padding: 0.5rem;
 }
