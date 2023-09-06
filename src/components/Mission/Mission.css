@@ -23,7 +23,7 @@
   width: 15%;
 }
 
-td .not-a-member-button{
+td .not-a-member-button {
   border: none;
   color: #fff;
   background-color: gray;
@@ -46,7 +46,7 @@ td .join-mission-button {
 }
 
 td .active-member-button {
-  background-color: #2a6dfd; 
+  background-color: #2a6dfd;
   color: white;
   border: none;
   border-radius: 5px;
