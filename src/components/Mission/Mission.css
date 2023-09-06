@@ -1,3 +1,45 @@
-h1 {
-  color: red;
+.MissionTable {
+  border-collapse: collapse;
+  padding: 2rem;
+  margin: 2rem;
+}
+.MissionTable td {
+  padding: 1rem;
+  border: 1px solid gainsboro;
+}
+
+.MissionTable th {
+  text-align: left;
+  border: 1px solid gainsboro;
+  padding: 0.5rem;
+}
+
+.MissionDescription {
+  width: 60%;
+ 
+}
+
+.MissionName {
+  width:15%;
+}
+
+.member button {
+  border: none;
+  color: #fff;
+  background-color: gray;
+  border-radius: 5px;
+}
+.join button {
+  border: solid 1px gray;
+  color: gray;
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
+.gray-background {
+  background-color: #f0f0f0;
+}
+
+.white-background {
+  background-color: #ffffff;
 }
