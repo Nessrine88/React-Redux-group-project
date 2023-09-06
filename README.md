@@ -128,6 +128,11 @@ You can deploy this project using:
 - Twitter: [@twitterhandle](https://twitter.com/Nessour88)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/nessrine-macherki-86959196/)
 
+👤 **José Berbesí**
+- GitHub: [@githubhandle](https://github.com/jlberbesi)
+- Twitter: [@twitterhandle](https://twitter.com/imberbesi)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/jlberbesi/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
