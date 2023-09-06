@@ -25,8 +25,7 @@ const missionSlice = createSlice({
 
       state.missions = state.missions.map((mission) => {
         if (mission.mission_id === missionIdToToggle) {
-          const newStatus =
-            mission.status === 'Active Member' ? 'Not A Member' : 'Active Member';
+          const newStatus = mission.status === 'Active Member' ? 'Not A Member' : 'Active Member';
 
           return {
             ...mission,

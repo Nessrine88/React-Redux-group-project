@@ -44,3 +44,13 @@
 .white-background {
   background-color: #fff;
 }
+
+td .active-member-button {
+  background-color: #2a6dfd; 
+  color: white;
+}
+
+td .leave-mission-button {
+  border: 1px solid red;
+  color: rgb(255, 0, 0);
+}
