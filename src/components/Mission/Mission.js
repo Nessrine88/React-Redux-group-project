@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchMissions } from '../../redux/Mission/MissionSlice';
+import { fetchMissions, toggleJoinLeaveMember } from '../../redux/Mission/MissionSlice';
 import './Mission.css';
 
 function Mission() {
@@ -11,24 +11,47 @@ function Mission() {
     dispatch(fetchMissions());
   }, [dispatch]);
 
+  const handleToggleMembership = (missionId) => {
+    dispatch(toggleJoinLeaveMember(missionId));
+  };
+
   return (
     <div>
       <table className="MissionTable">
-        <tr>
-          <th>Mission</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>{' '}</th>
-
-        </tr>
-        {missions.map((mission, index) => (
-          <tr key={mission.mission_id} className={index % 2 === 0 ? 'gray-background' : 'white-background'}>
-            <td className="MissionName">{mission.mission_name}</td>
-            <td className="MissionDescription">{mission.description}</td>
-            <td className="member"><button type="button">Not A Member</button></td>
-            <td className="join"><button type="button">Join Mission</button></td>
+        <thead>
+          <tr>
+            <th>Mission</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>{' '}</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {missions.map((mission, index) => (
+            <tr
+              key={mission.mission_id}
+              className={index % 2 === 0 ? 'gray-background' : 'white-background'}
+            >
+              <td className="MissionName">{mission.mission_name}</td>
+              <td className="MissionDescription">{mission.description}</td>
+              <td className="member">
+                <button
+                  type="button" >
+                  {mission.status === 'Active Member' ? 'Active Member' : 'Not A Member'}
+                </button>
+              </td>
+              <td className="join">
+                <button
+                  type="button"
+                  onClick={() => handleToggleMembership(mission.mission_id)}
+                >
+                  {mission.status === 'Active Member' ? 'Leave Mission' : 'Join Mission'}
+                 
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

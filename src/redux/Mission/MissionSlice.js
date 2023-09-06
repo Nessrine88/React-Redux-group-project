@@ -19,13 +19,30 @@ const initialState = {
 const missionSlice = createSlice({
   name: 'missions',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchMissions.fulfilled, (state, action) => {
-        state.missions = action.payload;
+  reducers: {
+    toggleJoinLeaveMember: (state, action) => {
+      const missionIdToToggle = action.payload;
+
+      state.missions = state.missions.map((mission) => {
+        if (mission.mission_id === missionIdToToggle) {
+          const newStatus =
+            mission.status === 'Active Member' ? 'Not A Member' : 'Active Member';
+
+          return {
+            ...mission,
+            status: newStatus,
+          };
+        }
+        return mission;
       });
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchMissions.fulfilled, (state, action) => {
+      state.missions = action.payload;
+    });
   },
 });
 
+export const { toggleJoinLeaveMember } = missionSlice.actions;
 export default missionSlice.reducer;
