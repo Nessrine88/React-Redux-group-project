@@ -1,12 +1,12 @@
 import React from 'react';
-import './Mission.css';
 
-function Mission() {
+const Mission = () => {
   return (
     <div>
-      <h1>This is my Mission file</h1>
+      this is my mission file
     </div>
-  );
+  )
 }
 
-export default Mission;
+export default Mission
+

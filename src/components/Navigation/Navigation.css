@@ -23,10 +23,29 @@
 .list li {
   list-style: none;
   margin-left: 2rem;
+<<<<<<< HEAD
+=======
+  
+}
+
+.list a {
+  text-decoration: none;
+>>>>>>> 5439fc3b88029f3f9e7a68f4c8e6186bf558132b
   color: blue;
 }
 
 .profile {
+<<<<<<< HEAD
   border-left: 1px solid;
   padding-left: 0.7rem;
 }
+=======
+  border-left: 1px solid black;
+  padding-left: 0.7rem;
+}
+.list a:focus {
+  text-decoration: underline;
+}
+
+
+>>>>>>> 5439fc3b88029f3f9e7a68f4c8e6186bf558132b

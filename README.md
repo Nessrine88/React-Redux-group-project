@@ -1,70 +1,183 @@
-# Getting Started with Create React App
+<h1 align ="center" >   Space Travelers' Hub</h1>
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
 
-### `npm start`
+# 📗 Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
+- [💻 Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [Deployment](#deployment)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- PROJECT DESCRIPTION -->
 
-### `npm test`
+# 📖  Space Travelers' Hub <a name="about-project"></a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In this project, we will leverage real-time data from the SpaceX API to develop a web application. The focus of this application is to create a platform for a company specializing in both commercial and scientific space travel services. Within this web application, users will have the capability to reserve rockets and participate in specific space missions
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠 Built With <a name="built-with"></a>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+>The project is built using the following technologies and tools:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- HTML
+- CSS
+- JavaScript
+- React
+- Redux
 
-### `npm run eject`
+#
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- Features -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Key Features <a name="key-features"></a>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> The main features of the application include:
 
-## Learn More
+- Rocket Reservation: Users can browse and select from a list of available rockets and make reservations for future space travel.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Mission Selection: Users can explore and choose from a variety of space missions, each with its own objectives and destinations.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- User Profiles: Registered users can create and manage profiles, including personal information, travel history, and preferences.
 
-### Code Splitting
+- Booking Management: Users can view, modify, or cancel their rocket reservations and mission participation.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Real-time SpaceX Data: The application fetches real-time data from the SpaceX API to provide up-to-date information about rockets, missions, and space-related events.
 
-### Analyzing the Bundle Size
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- LIVE DEMO -->
 
-### Making a Progressive Web App
+## 🚀 Live Demo <a name="live-demo"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Coming soon ...
 
-### Advanced Configuration
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- GETTING STARTED -->
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+> Before you begin, make sure you have the necessary software and dependencies installed on your system. These may include programming languages, package managers, and databases required by the project. Check the "Prerequisites" section of the README for specific requirements.
+
+### Prerequisites
+
+In order to run this project you need:
+
+1. Clone the repository to your desired location:
+```sh
+git git@github.com:Nessrine88/React-redux-Group-Project1.git
+```
+
+2. Open the project folder in your code editor.
+
+### Setup
+
+Clone this repository to your desired folder
+
+
+### Usage
+
+To run the project, execute the following command:
+
+Open Html file
+### Run tests
+
+Tests for this project will be added in the future.
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+You can deploy this project using:
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Choose a hosting provider or platform for your website (e.g., GitHub Pages, Netlify, Heroku).
+
+2. Set up the hosting environment according to the provider's instructions.
+
+3. Build or compile your project files, if necessary.
+
+4. Upload or deploy the project files to the hosting environment.
+
+5. Access your deployed website using the provided URL or domain.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+# 👥 Authors <a name="Nessrine Macherki"></a>
+
+👤 **Macherki Nessrine**
+- GitHub: [@githubhandle](https://github.com/Nessrine88)
+- Twitter: [@twitterhandle](https://twitter.com/Nessour88)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/nessrine-macherki-86959196/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+> Planned future features include:
+
+- Educational Resources: Provide educational resources such as videos, articles, and interactive lessons about space science, astronomy, and the history of space exploration.
+
+- Community Forums: Create a space enthusiasts community where users can discuss space-related topics, share experiences, and connect with fellow travelers.
+
+
+ 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Nessrine88/React-redux-Group-Project1/issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+> If you find this project helpful or you like it, please give it a star ⭐️. 
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+> We would like to express our gratitude to Microverse online school and our coding partners..
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FAQ (optional) -->
+
+  
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+>This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
