@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchDragons, reserveDragon, cancelDragonReservation, selectDragons,
@@ -9,16 +9,34 @@ function Dragons() {
   const dragons = useSelector(selectDragons);
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  // Local component state to track reserved dragons for the current session
+  const [reservedDragons, setReservedDragons] = React.useState(() => {
+    // Initialize from session storage or an empty array
+    const sessionReservedDragons = sessionStorage.getItem('reservedDragons');
+    return sessionReservedDragons ? JSON.parse(sessionReservedDragons) : [];
+  });
+
+  useEffect(() => {
     dispatch(fetchDragons());
   }, [dispatch]);
 
   const handleReserveDragon = (id) => {
+    // Update local state
+    setReservedDragons([...reservedDragons, id]);
+    // Dispatch the reservation action
     dispatch(reserveDragon({ id }));
+    // Update session storage
+    sessionStorage.setItem('reservedDragons', JSON.stringify([...reservedDragons, id]));
   };
 
   const handleCancelReservation = (id) => {
+    // Update local state
+    const updatedReservedDragons = reservedDragons.filter((dragonId) => dragonId !== id);
+    setReservedDragons(updatedReservedDragons);
+    // Dispatch the cancel reservation action
     dispatch(cancelDragonReservation({ id }));
+    // Update session storage
+    sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragons));
   };
 
   return (
@@ -38,7 +56,7 @@ function Dragons() {
                 Description:
                 {dragon.description}
               </p>
-              {dragon.reserved ? (
+              {(dragon.reserved || reservedDragons.includes(dragon.id)) ? (
                 <button type="button" onClick={() => handleCancelReservation(dragon.id)}>Cancel Reservation</button>
               ) : (
                 <button type="button" onClick={() => handleReserveDragon(dragon.id)}>Reserve</button>
