@@ -1,18 +1,34 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchMissions, toggleJoinLeaveMember } from '../../redux/Mission/MissionSlice';
+import {
+  fetchMissions,
+  toggleJoinLeaveMember,
+} from '../../redux/Mission/MissionSlice';
 import './Mission.css';
 
 function Mission() {
   const missions = useSelector((state) => state.missions.missions);
   const dispatch = useDispatch();
 
+  const [reservedMissions, setReservedMissions] = React.useState(() => {
+    const sessionReservedMissions = sessionStorage.getItem('reservedMissions');
+    return sessionReservedMissions ? JSON.parse(sessionReservedMissions) : [];
+  });
+
   useEffect(() => {
     dispatch(fetchMissions());
   }, [dispatch]);
 
   const handleToggleMembership = (missionId) => {
+    const updatedReservedMissions = reservedMissions.includes(missionId)
+      ? reservedMissions.filter((reservedId) => reservedId !== missionId)
+      : [...reservedMissions, missionId];
+
+    setReservedMissions(updatedReservedMissions);
+
     dispatch(toggleJoinLeaveMember(missionId));
+
+    sessionStorage.setItem('reservedMissions', JSON.stringify(updatedReservedMissions));
   };
 
   return (
@@ -34,8 +50,8 @@ function Mission() {
                 index % 2 === 0 ? 'gray-background' : 'white-background'
               } ${
                 mission.status === 'Active Member'
-                  ? 'member-active'
-                  : 'member-not-active'
+                  ? 'member-not-active'
+                  : 'member-active'
               }`}
             >
               <td className="MissionName">{mission.mission_name}</td>
@@ -44,12 +60,12 @@ function Mission() {
                 <button
                   type="button"
                   className={`${
-                    mission.status === 'Active Member'
+                    reservedMissions.includes(mission.mission_id)
                       ? 'active-member-button'
                       : 'not-a-member-button'
                   }`}
                 >
-                  {mission.status === 'Active Member' ? 'Active Member' : 'Not A Member'}
+                  {reservedMissions.includes(mission.mission_id)? 'Active Member' :'Not A Member' }
                 </button>
               </td>
               <td className="join">
@@ -57,12 +73,12 @@ function Mission() {
                   type="button"
                   onClick={() => handleToggleMembership(mission.mission_id)}
                   className={`${
-                    mission.status === 'Active Member'
+                    reservedMissions.includes(mission.mission_id)
                       ? 'leave-mission-button'
                       : 'join-mission-button'
                   }`}
                 >
-                  {mission.status === 'Active Member' ? 'Leave Mission' : 'Join Mission'}
+                  {reservedMissions.includes(mission.mission_id) ? 'Leave Mission': 'Join Mission' }
                 </button>
               </td>
             </tr>
