@@ -133,6 +133,11 @@ You can deploy this project using:
 - Twitter: [@twitterhandle](https://twitter.com/imberbesi)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/jlberbesi/)
 
+👤 **Zabih Noori**
+- GitHub: [@githubhandle](https://github.com/ZabihullahNooriWardak)
+- Twitter: [@twitterhandle](https://twitter.com/ZabiNoo31954752)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/zabih-noori-aa59a924a/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
