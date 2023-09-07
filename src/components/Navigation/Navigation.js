@@ -21,6 +21,11 @@ function Navigation() {
             Mission
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/Dragons">
+            Dragons
+          </NavLink>
+        </li>
         <li className="profile">
           <NavLink to="/myprofile">
             My Profile
