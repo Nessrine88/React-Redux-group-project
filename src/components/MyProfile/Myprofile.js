@@ -15,7 +15,6 @@ function MyMissions() {
   }, []);
 
   const handleToggleMembership = (missionId) => {
-    // Update local state
     const updatedReservedMissions = reservedMissions.includes(missionId)
       ? reservedMissions.filter((reservedId) => reservedId !== missionId)
       : [...reservedMissions, missionId];
