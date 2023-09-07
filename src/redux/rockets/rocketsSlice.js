@@ -57,6 +57,7 @@ const rocketsSlice = createSlice({
   },
 });
 
-export const { bookRocket, cancelBooking } = rocketsSlice.actions; // Cambio aquí
-export const selectRockets = (state) => state.rockets.rockets; // Añadido
-export default rocketsSlice.reducer; // Exporta el reducer
+export const { bookRocket, cancelBooking } = rocketsSlice.actions;
+export const selectRockets = (state) => state.rockets.rockets;
+export default rocketsSlice.reducer;
+

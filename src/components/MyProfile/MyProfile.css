@@ -1,11 +1,11 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  height: 100%;
 }
 
 .container button {
   border: 1px solid red;
   color: rgb(255, 0, 0);
   padding: 0.5rem;
-  place-content: flex-end;
 }
