@@ -1,12 +1,11 @@
-.my-profile-container {
+.container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: flex-start;
 }
 
-.column {
-  padding: 20px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+.container button {
+  border: 1px solid red;
+  color: rgb(255, 0, 0);
+  padding: 0.5rem;
+  place-content: flex-end;
 }

@@ -1,62 +1,73 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectDragons, cancelDragonReservation } from '../../redux/dragons/dragonsSlice';
+import { selectRockets, cancelBooking as cancelRocketBooking } from '../../redux/rockets/rocketsSlice';
 import MyMissions from './MyMissions';
-import './MyProfile.css';
+import './MyProfile.css'
+
 
 function MyProfile() {
   const dragons = useSelector(selectDragons);
+  const rockets = useSelector(selectRockets);
+
   const dispatch = useDispatch();
-  const [reservedDragons, setReservedDragons] = React.useState(() => {
-    const sessionReservedDragons = sessionStorage.getItem('reservedDragons');
-    return sessionReservedDragons ? JSON.parse(sessionReservedDragons) : [];
-  });
 
-  useEffect(() => {
-    const sessionReservedDragons = sessionStorage.getItem('reservedDragons');
-    if (sessionReservedDragons) {
-      setReservedDragons(JSON.parse(sessionReservedDragons));
-    }
-  }, []);
+  const reservedDragons = dragons.filter((dragon) => dragon.reserved);
+  const reservedRockets = rockets.filter((rocket) => rocket.booked);
 
-  const handleCancelReservation = (id) => {
-    const updatedReservedDragons = reservedDragons.filter((dragonId) => dragonId !== id);
-    setReservedDragons(updatedReservedDragons);
+  const handleCancelDragonReservation = (id) => {
     dispatch(cancelDragonReservation({ id }));
-    sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragons));
   };
 
-  const reservedDragonsData = dragons.filter((dragon) => reservedDragons.includes(dragon.id));
+  const handleCancelRocketBooking = (rocketId) => {
+    dispatch(cancelRocketBooking(rocketId));
+    const reservedRockets = JSON.parse(sessionStorage.getItem('reservedRockets') || '[]');
+    const updatedReservedRockets = reservedRockets.filter((id) => id !== rocketId);
+    sessionStorage.setItem('reservedRockets', JSON.stringify(updatedReservedRockets));
+  };
 
   return (
-    <div className="my-profile-container">
-      <div className="column">
-        <div className="my-missions">
-          <MyMissions />
-        </div>
+    <div className='container'>
+      <div className="MyRockets">
+      <h2>Reserved Rockets</h2>
+      {reservedRockets.length > 0 ? (
+        <ul>
+          {reservedRockets.map((rocket) => (
+            <li key={rocket.id}>
+              <h3>{rocket.name}</h3>
+              <p>{rocket.description}</p>
+              <button type="button" onClick={() => handleCancelRocketBooking(rocket.id)}>
+                Cancel Booking
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>You haven&apos;t reserved any rockets yet.</p>
+      )}
+</div>
+<div className="MyMissions">
+        <MyMissions/>
       </div>
-      <div className="column reserved-dragons">
-        <h2>Reserved Dragons</h2>
-        {reservedDragonsData.length > 0 ? (
-          <ul>
-            {reservedDragonsData.map((dragon) => (
-              <li key={dragon.id}>
-                <h3>{dragon.name}</h3>
-                <p>{dragon.description}</p>
-                <button type="button" onClick={() => handleCancelReservation(dragon.id)}>
-                  Cancel Reservation
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>You haven&apos;t reserved any dragons yet.</p>
-        )}
-      </div>
-      <div className="column Dragon-column">
-        <h2>Reserved Rockets</h2>
+<div className="MyDragons">
+         <h2>Reserved Dragons</h2>
+      {reservedDragons.length > 0 ? (
+        <ul>
+          {reservedDragons.map((dragon) => (
+            <li key={dragon.id}>
+              <h3>{dragon.name}</h3>
+              <p>{dragon.description}</p>
+              <button type="button" onClick={() => handleCancelDragonReservation(dragon.id)}>
+                Cancel Reservation
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : (
         <p>You haven&apos;t reserved any dragons yet.</p>
+      )}
       </div>
+
     </div>
   );
 }
