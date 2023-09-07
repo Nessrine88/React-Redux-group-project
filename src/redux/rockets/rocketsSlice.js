@@ -22,10 +22,15 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
   reducers: {
-    toggleBooking: (state, action) => {
+    bookRocket: (state, action) => {
       const rocketId = action.payload;
       const rocket = state.rockets.find((rocket) => rocket.id === rocketId);
-      if (rocket) rocket.booked = !rocket.booked; // Toggle the booked state
+      if (rocket) rocket.booked = true;
+    },
+    cancelBooking: (state, action) => {
+      const rocketId = action.payload;
+      const rocket = state.rockets.find((rocket) => rocket.id === rocketId);
+      if (rocket) rocket.booked = false;
     },
   },
   extraReducers: (builder) => {
@@ -35,6 +40,14 @@ const rocketsSlice = createSlice({
       })
       .addCase(fetchRockets.fulfilled, (state, action) => {
         state.status = 'succeeded';
+        const sessionReservedRockets = sessionStorage.getItem('reservedRockets');
+
+        action.payload.forEach((rocket) => {
+          if (sessionReservedRockets && JSON.parse(sessionReservedRockets).includes(rocket.id)) {
+            rocket.booked = true;
+          }
+        });
+
         state.rockets = action.payload;
       })
       .addCase(fetchRockets.rejected, (state, action) => {
@@ -44,8 +57,6 @@ const rocketsSlice = createSlice({
   },
 });
 
-export const { toggleBooking } = rocketsSlice.actions;
-
-export const selectRockets = (state) => state.rockets.rockets;
-
-export default rocketsSlice.reducer;
+export const { bookRocket, cancelBooking } = rocketsSlice.actions; // Cambio aquí
+export const selectRockets = (state) => state.rockets.rockets; // Añadido
+export default rocketsSlice.reducer; // Exporta el reducer

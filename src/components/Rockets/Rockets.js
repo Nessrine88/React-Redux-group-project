@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types'; // Importar PropTypes
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchRockets, selectRockets, toggleBooking } from '../../redux/rockets/rocketsSlice';
+import {
+  fetchRockets,
+  selectRockets,
+  bookRocket,
+  cancelBooking,
+} from '../../redux/rockets/rocketsSlice';
 import './Rockets.css';
 
 function Badge({ isBooked }) {
@@ -12,22 +17,40 @@ function Badge({ isBooked }) {
 }
 
 Badge.propTypes = {
-  isBooked: PropTypes.bool.isRequired, // PropTypes para isBooked
+  isBooked: PropTypes.bool.isRequired,
 };
 
 function Rockets() {
   const rockets = useSelector(selectRockets);
   const status = useSelector((state) => state.rockets.status);
   const error = useSelector((state) => state.rockets.error);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const sessionReservedRockets = sessionStorage.getItem('reservedRockets');
+
+    if (sessionReservedRockets) {
+      const reservedRocketIds = JSON.parse(sessionReservedRockets);
+      reservedRocketIds.forEach((rocketId) => dispatch(bookRocket(rocketId)));
+    }
+
     dispatch(fetchRockets());
   }, [dispatch]);
 
   const handleBookingToggle = (rocketId) => {
-    dispatch(toggleBooking(rocketId)); // Aquí cambiamos bookRocket por toggleBooking
+    const rocket = rockets.find((r) => r.id === rocketId);
+    if (rocket && rocket.booked) {
+      dispatch(cancelBooking(rocketId));
+
+      const reservedRockets = JSON.parse(sessionStorage.getItem('reservedRockets') || '[]');
+      const updatedReservedRockets = reservedRockets.filter((id) => id !== rocketId);
+      sessionStorage.setItem('reservedRockets', JSON.stringify(updatedReservedRockets));
+    } else {
+      dispatch(bookRocket(rocketId));
+
+      const reservedRockets = JSON.parse(sessionStorage.getItem('reservedRockets') || '[]');
+      sessionStorage.setItem('reservedRockets', JSON.stringify([...reservedRockets, rocketId]));
+    }
   };
 
   let content;
