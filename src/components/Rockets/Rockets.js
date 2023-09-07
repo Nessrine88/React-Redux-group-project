@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchRockets, selectRockets } from '../../redux/rockets/rocketsSlice';
+import { fetchRockets, selectRockets, bookRocket } from '../../redux/rockets/rocketsSlice';
 
 function Rockets() {
   const rockets = useSelector(selectRockets);
+  const status = useSelector((state) => state.rockets.status);
+  const error = useSelector((state) => state.rockets.error);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -12,25 +15,28 @@ function Rockets() {
 
   let content;
 
-  if (rockets.status === 'loading') {
+  if (status === 'loading') {
     content = <div>Loading...</div>;
-  } else if (rockets.status === 'succeeded') {
+  } else if (status === 'succeeded') {
     content = (
       <div>
-        {rockets.rockets.map((rocket) => (
+        {rockets.map((rocket) => (
           <div key={rocket.id}>
             <h2>{rocket.rocket_name}</h2>
             <p>{rocket.description}</p>
             <img src={rocket.flickr_images[0]} alt={rocket.rocket_name} />
+            <button type="button" onClick={() => dispatch(bookRocket(rocket.id))}>
+              {rocket.booked ? 'Cancel Booking' : 'Book Rocket'}
+            </button>
           </div>
         ))}
       </div>
     );
-  } else if (rockets.status === 'failed') {
+  } else if (status === 'failed') {
     content = (
       <div>
         Error:
-        {rockets.error}
+        {error}
       </div>
     );
   }

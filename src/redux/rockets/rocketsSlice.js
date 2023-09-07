@@ -6,7 +6,7 @@ const baseUrl = 'https://api.spacexdata.com/v4/rockets';
 export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () => {
   try {
     const response = await axios.get(baseUrl);
-    return response.data;
+    return response.data.map((rocket) => ({ ...rocket, booked: false })); // añadir el campo 'booked' a cada cohete
   } catch (error) {
     throw new Error('Failed to fetch rockets');
   }
@@ -21,7 +21,13 @@ const initialState = {
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
-  reducers: {},
+  reducers: {
+    bookRocket: (state, action) => {
+      const rocketId = action.payload;
+      const rocket = state.rockets.find((rocket) => rocket.id === rocketId);
+      if (rocket) rocket.booked = !rocket.booked; // toggle booking status
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchRockets.pending, (state) => {
@@ -38,6 +44,8 @@ const rocketsSlice = createSlice({
   },
 });
 
-export const selectRockets = (state) => state.rockets; // Exporta selectRockets
+export const { bookRocket } = rocketsSlice.actions; // Export the new reducer action
+
+export const selectRockets = (state) => state.rockets.rockets;
 
 export default rocketsSlice.reducer;
