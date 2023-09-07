@@ -1,0 +1,10 @@
+img.dragon {
+  width: 240px;
+  height: 240px;
+  margin-right: 20px;
+}
+
+li.dragonLi {
+  display: flex;
+  align-items: flex-end;
+}
