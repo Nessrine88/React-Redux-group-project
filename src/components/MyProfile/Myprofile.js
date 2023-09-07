@@ -23,7 +23,9 @@ function MyMissions() {
     sessionStorage.setItem('reservedMissions', JSON.stringify(updatedReservedMissions));
   };
 
-  const reservedMissionsData = missions.filter((mission) => reservedMissions.includes(mission.mission_id));
+  const reservedMissionsData = missions.filter(
+    (mission) => reservedMissions.includes(mission.mission_id),
+  );
 
   return (
     <div>
@@ -41,7 +43,7 @@ function MyMissions() {
           ))}
         </ul>
       ) : (
-        <p>You haven't reserved any missions yet.</p>
+        <p>You haven&apos;t reserved any missions yet.</p>
       )}
     </div>
   );

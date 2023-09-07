@@ -65,7 +65,7 @@ function Mission() {
                       : 'not-a-member-button'
                   }`}
                 >
-                  {reservedMissions.includes(mission.mission_id)? 'Active Member' :'Not A Member' }
+                  {reservedMissions.includes(mission.mission_id) ? 'Active Member' : 'Not A Member' }
                 </button>
               </td>
               <td className="join">
@@ -78,7 +78,7 @@ function Mission() {
                       : 'join-mission-button'
                   }`}
                 >
-                  {reservedMissions.includes(mission.mission_id) ? 'Leave Mission': 'Join Mission' }
+                  {reservedMissions.includes(mission.mission_id) ? 'Leave Mission' : 'Join Mission' }
                 </button>
               </td>
             </tr>
