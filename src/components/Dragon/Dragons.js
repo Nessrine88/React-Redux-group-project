@@ -9,9 +9,7 @@ function Dragons() {
   const dragons = useSelector(selectDragons);
   const dispatch = useDispatch();
 
-  // Local component state to track reserved dragons for the current session
   const [reservedDragons, setReservedDragons] = React.useState(() => {
-    // Initialize from session storage or an empty array
     const sessionReservedDragons = sessionStorage.getItem('reservedDragons');
     return sessionReservedDragons ? JSON.parse(sessionReservedDragons) : [];
   });
@@ -21,21 +19,17 @@ function Dragons() {
   }, [dispatch]);
 
   const handleReserveDragon = (id) => {
-    // Update local state
     setReservedDragons([...reservedDragons, id]);
-    // Dispatch the reservation action
+
     dispatch(reserveDragon({ id }));
-    // Update session storage
+
     sessionStorage.setItem('reservedDragons', JSON.stringify([...reservedDragons, id]));
   };
 
   const handleCancelReservation = (id) => {
-    // Update local state
     const updatedReservedDragons = reservedDragons.filter((dragonId) => dragonId !== id);
     setReservedDragons(updatedReservedDragons);
-    // Dispatch the cancel reservation action
     dispatch(cancelDragonReservation({ id }));
-    // Update session storage
     sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragons));
   };
 
