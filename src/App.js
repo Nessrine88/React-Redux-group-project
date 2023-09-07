@@ -4,7 +4,7 @@ import Navigation from './components/Navigation/Navigation';
 import Myprofile from './components/MyProfile/Myprofile';
 import Rockets from './components/Rockets/Rockets';
 import Mission from './components/Mission/Mission';
-import Dragons from './components/Dragons';
+import Dragons from './components/Dragon/Dragons';
 
 function App() {
   return (
