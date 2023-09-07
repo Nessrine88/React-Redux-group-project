@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectDragons, cancelDragonReservation } from '../../redux/dragons/dragonsSlice';
 import { selectRockets, cancelBooking as cancelRocketBooking } from '../../redux/rockets/rocketsSlice';
 import MyMissions from './MyMissions';
-import './MyProfile.css'
-
+import './MyProfile.css';
 
 function MyProfile() {
   const dragons = useSelector(selectDragons);
@@ -27,45 +26,45 @@ function MyProfile() {
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       <div className="MyRockets">
-      <h2>Reserved Rockets</h2>
-      {reservedRockets.length > 0 ? (
-        <ul>
-          {reservedRockets.map((rocket) => (
-            <li key={rocket.id}>
-              <h3>{rocket.name}</h3>
-              <p>{rocket.description}</p>
-              <button type="button" onClick={() => handleCancelRocketBooking(rocket.id)}>
-                Cancel Booking
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>You haven&apos;t reserved any rockets yet.</p>
-      )}
-</div>
-<div className="MyMissions">
-        <MyMissions/>
+        <h2>Reserved Rockets</h2>
+        {reservedRockets.length > 0 ? (
+          <ul>
+            {reservedRockets.map((rocket) => (
+              <li key={rocket.id}>
+                <h3>{rocket.name}</h3>
+                <p>{rocket.description}</p>
+                <button type="button" onClick={() => handleCancelRocketBooking(rocket.id)}>
+                  Cancel Booking
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>You haven&apos;t reserved any rockets yet.</p>
+        )}
       </div>
-<div className="MyDragons">
-         <h2>Reserved Dragons</h2>
-      {reservedDragons.length > 0 ? (
-        <ul>
-          {reservedDragons.map((dragon) => (
-            <li key={dragon.id}>
-              <h3>{dragon.name}</h3>
-              <p>{dragon.description}</p>
-              <button type="button" onClick={() => handleCancelDragonReservation(dragon.id)}>
-                Cancel Reservation
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>You haven&apos;t reserved any dragons yet.</p>
-      )}
+      <div className="MyMissions">
+        <MyMissions />
+      </div>
+      <div className="MyDragons">
+        <h2>Reserved Dragons</h2>
+        {reservedDragons.length > 0 ? (
+          <ul>
+            {reservedDragons.map((dragon) => (
+              <li key={dragon.id}>
+                <h3>{dragon.name}</h3>
+                <p>{dragon.description}</p>
+                <button type="button" onClick={() => handleCancelDragonReservation(dragon.id)}>
+                  Cancel Reservation
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>You haven&apos;t reserved any dragons yet.</p>
+        )}
       </div>
 
     </div>

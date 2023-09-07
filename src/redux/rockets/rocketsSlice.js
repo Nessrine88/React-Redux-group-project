@@ -60,4 +60,3 @@ const rocketsSlice = createSlice({
 export const { bookRocket, cancelBooking } = rocketsSlice.actions;
 export const selectRockets = (state) => state.rockets.rockets;
 export default rocketsSlice.reducer;
-
