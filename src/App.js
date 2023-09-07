@@ -1,5 +1,7 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import {
+  Routes, Route, BrowserRouter, Navigate,
+} from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import Myprofile from './components/MyProfile/Myprofile';
 import Rockets from './components/Rockets/Rockets';
@@ -10,18 +12,12 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-
         <Navigation />
         <Routes>
+          <Route path="/" element={<Navigate to="/Rockets" replace />} />
           <Route path="/Myprofile" element={<Myprofile />} />
-        </Routes>
-        <Routes>
           <Route path="/Mission" element={<Mission />} />
-        </Routes>
-        <Routes>
           <Route path="/Rockets" element={<Rockets />} />
-        </Routes>
-        <Routes>
           <Route path="/Dragons" element={<Dragons />} />
         </Routes>
       </div>
