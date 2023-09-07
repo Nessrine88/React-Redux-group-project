@@ -54,7 +54,8 @@ function MyProfile() {
         )}
       </div>
       <div className="column Dragon-column">
-        {/* Coming Soon*/}
+        <h2>Reserved Rockets</h2>
+        <p>You haven&apos;t reserved any dragons yet.</p>
       </div>
     </div>
   );

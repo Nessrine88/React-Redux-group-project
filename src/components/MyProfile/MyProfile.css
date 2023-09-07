@@ -1,7 +1,7 @@
 .my-profile-container {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr; 
-  align-items: flex-start; 
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: flex-start;
 }
 
 .column {
