@@ -58,14 +58,16 @@
   transition: background-color 0.3s ease-in-out;
 }
 
+.cancel-button {
+  background-color: #dc3545;
+}
+
 .reserve-button:hover,
 .cancel-button:hover {
   background-color: #0056b3;
 }
 
-.cancel-button {
-  background-color: #dc3545;
-}
+
 
 .cancel-button:hover {
   background-color: #c82333;

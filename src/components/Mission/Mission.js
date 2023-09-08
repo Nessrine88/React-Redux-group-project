@@ -33,7 +33,7 @@ function Mission() {
 
   return (
     <div>
-      <table className="MissionTable">
+      <table className="missiontable">
         <thead>
           <tr>
             <th>Mission</th>
@@ -54,8 +54,8 @@ function Mission() {
                   : 'member-active'
               }`}
             >
-              <td className="MissionName">{mission.mission_name}</td>
-              <td className="MissionDescription">{mission.description}</td>
+              <td className="missionname">{mission.mission_name}</td>
+              <td className="missiondescription">{mission.description}</td>
               <td className="member">
                 <button
                   type="button"
