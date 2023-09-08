@@ -54,6 +54,6 @@ td .active-member-button {
 
 td .leave-mission-button {
   border: 1px solid red;
-  color: rgb(255, 0, 0);
+  color: rgb(255 0 0);
   padding: 0.5rem;
 }
