@@ -9,7 +9,7 @@
 
 .logo {
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .logo-img {
@@ -42,7 +42,7 @@
 }
 
 .nav-link:hover {
-  color: #007bff; 
+  color: #007bff;
 }
 
 .profile {
