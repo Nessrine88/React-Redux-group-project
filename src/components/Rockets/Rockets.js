@@ -65,7 +65,7 @@ function Rockets() {
             <h2>{rocket.name}</h2>
             <Badge isBooked={rocket.booked} />
             <p>{rocket.description}</p>
-            <img className="rocket-image" src={rocket.flickr_images[0]} alt={rocket.rocket_name} />
+            <img className="rocket-image" src={rocket.flickr_images[0]} alt={rocket.name} />
             <button
               className={`rocket-button ${rocket.booked ? 'cancel-booking' : 'book-rocket'}`}
               type="button"
