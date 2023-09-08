@@ -45,7 +45,7 @@ function MyProfile() {
 
   return (
     <div className="container">
-      <div className="MyRockets">
+      <div className="MyRockets flex">
         <h2>Reserved Rockets</h2>
         {reservedRocketsData.length > 0 ? (
           <ul>
@@ -60,13 +60,13 @@ function MyProfile() {
             ))}
           </ul>
         ) : (
-          <p>You haven not reserved any rockets yet.</p>
+          <p>You haven&apos;t reserved any rockets yet.</p>
         )}
       </div>
-      <div className="MyMissions">
+      <div className="MyMissions flex">
         <MyMissions />
       </div>
-      <div className="MyDragons">
+      <div className="MyDragons flex">
         <h2>Reserved Dragons</h2>
         {reservedDragonsData.length > 0 ? (
           <ul>
@@ -81,7 +81,7 @@ function MyProfile() {
             ))}
           </ul>
         ) : (
-          <p>You haven not reserved any dragons yet.</p>
+          <p>You haven&apos;t reserved any dragons yet.</p>
         )}
       </div>
     </div>
