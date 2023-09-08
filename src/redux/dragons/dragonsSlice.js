@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const baseUrl = 'https://api.spacexdata.com/v4/dragons';
 
-// Async action to fetch dragons
 export const fetchDragons = createAsyncThunk('dragons/fetchDragons', async () => {
   try {
     const response = await axios.get(baseUrl);
@@ -15,7 +14,7 @@ export const fetchDragons = createAsyncThunk('dragons/fetchDragons', async () =>
 
 const initialState = {
   dragons: [],
-  reservedDragons: {}, // Track reserved dragons
+  reservedDragons: {},
 };
 
 const dragonsSlice = createSlice({
@@ -42,7 +41,6 @@ const dragonsSlice = createSlice({
 
 export const { reserveDragon, cancelDragonReservation } = dragonsSlice.actions;
 
-// Selectors
 export const selectDragons = (state) => state.dragons.dragons;
 export const selectReservedDragons = (state) => state.dragons.reservedDragons;
 

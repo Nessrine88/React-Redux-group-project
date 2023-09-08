@@ -8,13 +8,12 @@ import Myprofile from './components/MyProfile/Myprofile';
 import Rockets from './components/Rockets/Rockets';
 import Mission from './components/Mission/Mission';
 import Dragons from './components/Dragon/Dragons';
-import { fetchDragons } from './redux/dragons/dragonsSlice'; // Import your data fetching action
+import { fetchDragons } from './redux/dragons/dragonsSlice';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Fetch dragons data only when the app is mounted
     dispatch(fetchDragons());
   }, [dispatch]);
 
