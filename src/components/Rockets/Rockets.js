@@ -1,3 +1,5 @@
+// Rockets.js
+
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
@@ -59,14 +61,15 @@ function Rockets() {
     content = <div>Loading...</div>;
   } else if (status === 'succeeded') {
     content = (
-      <div>
+      <div className="rockets-container">
         {rockets.map((rocket) => (
-          <div key={rocket.id}>
+          <div className="rocket-card" key={rocket.id}>
             <h2>{rocket.name}</h2>
             <Badge isBooked={rocket.booked} />
             <p>{rocket.description}</p>
-            <img src={rocket.flickr_images[0]} alt={rocket.rocket_name} />
+            <img className="rocket-image" src={rocket.flickr_images[0]} alt={rocket.rocket_name} />
             <button
+              className={`rocket-button ${rocket.booked ? 'cancel-booking' : 'book-rocket'}`}
               type="button"
               onClick={() => handleBookingToggle(rocket.id)}
             >
