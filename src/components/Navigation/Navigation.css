@@ -1,40 +1,55 @@
-.logo img {
-  width: 50px;
-  margin: 1rem;
+.nav-container {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
   display: flex;
-  align-items: center;
+  align-items: center; 
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid gainsboro;
+.logo-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 1rem;
 }
 
-.list {
-  display: flex;
-  margin-right: 2rem;
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.list li {
+.nav-list {
   list-style: none;
-  margin-left: 2rem;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
-.list a {
+.nav-item {
+  margin-right: 1rem;
+}
+
+.nav-link {
   text-decoration: none;
-  color: blue;
+  color: #fff;
+  font-size: 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #007bff; 
 }
 
 .profile {
-  border-left: 1px solid black;
-  padding-left: 0.7rem;
+  border-left: 1px solid #fff;
+  padding-left: 1rem;
 }
 
-.list a:focus {
+.nav-link:focus {
   text-decoration: underline;
 }

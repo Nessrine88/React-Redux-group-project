@@ -1,3 +1,5 @@
+// Dragons.js
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -5,13 +7,13 @@ import {
   reserveDragon,
   cancelDragonReservation,
   selectDragons,
-  selectReservedDragons, // Add this import
+  selectReservedDragons,
 } from '../../redux/dragons/dragonsSlice';
 import './Dragon.css';
 
 function Dragons() {
   const dragons = useSelector(selectDragons);
-  const reservedDragons = useSelector(selectReservedDragons); // Get reserved dragons from Redux store
+  const reservedDragons = useSelector(selectReservedDragons);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +21,6 @@ function Dragons() {
   }, [dispatch]);
 
   useEffect(() => {
-    // Load reserved dragon IDs from sessionStorage on component mount
     const reservedDragonIds = JSON.parse(sessionStorage.getItem('reservedDragons') || '[]');
     reservedDragonIds.forEach((id) => dispatch(reserveDragon({ id })));
   }, [dispatch]);
@@ -27,7 +28,6 @@ function Dragons() {
   const handleReserveDragon = (id) => {
     dispatch(reserveDragon({ id }));
 
-    // Update sessionStorage with the reserved dragon ID
     const reservedDragonIds = JSON.parse(sessionStorage.getItem('reservedDragons') || '[]');
     if (!reservedDragonIds.includes(id)) {
       reservedDragonIds.push(id);
@@ -38,35 +38,36 @@ function Dragons() {
   const handleCancelReservation = (id) => {
     dispatch(cancelDragonReservation({ id }));
 
-    // Update sessionStorage to remove the canceled reservation
     const reservedDragonIds = JSON.parse(sessionStorage.getItem('reservedDragons') || '[]');
     const updatedReservedDragonIds = reservedDragonIds.filter((dragonId) => dragonId !== id);
     sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragonIds));
   };
 
   return (
-    <div>
-      <h1>Dragons</h1>
-      <ul>
+    <div className="dragons-container">
+      <h1 className="dragons-header">Dragons</h1>
+      <ul className="dragons-list">
         {dragons.map((dragon) => (
-          <li className="dragonLi" key={dragon.id}>
-            <img className="dragon" src={dragon.flickr_images[0]} alt={dragon.name} />
-            <div>
-              <h2>{dragon.name}</h2>
-              <p>
+          <li className="dragon-item" key={dragon.id}>
+            <img className="dragon-image" src={dragon.flickr_images[0]} alt={dragon.name} />
+            <div className="dragon-details">
+              <h2 className="dragon-name">{dragon.name}</h2>
+              <p className="dragon-type">
                 Type:
+                {' '}
                 {dragon.type}
               </p>
-              <p>
+              <p className="dragon-description">
                 Description:
+                {' '}
                 {dragon.description}
               </p>
               {reservedDragons[dragon.id] ? (
-                <button type="button" onClick={() => handleCancelReservation(dragon.id)}>
+                <button className="cancel-button" type="button" onClick={() => handleCancelReservation(dragon.id)}>
                   Cancel Reservation
                 </button>
               ) : (
-                <button type="button" onClick={() => handleReserveDragon(dragon.id)}>
+                <button className="reserve-button" type="button" onClick={() => handleReserveDragon(dragon.id)}>
                   Reserve
                 </button>
               )}
