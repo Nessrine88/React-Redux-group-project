@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchDragons, reserveDragon, cancelDragonReservation, selectDragons,
@@ -8,29 +8,26 @@ import './Dragon.css';
 function Dragons() {
   const dragons = useSelector(selectDragons);
   const dispatch = useDispatch();
-
-  const [reservedDragons, setReservedDragons] = React.useState(() => {
-    const sessionReservedDragons = sessionStorage.getItem('reservedDragons');
-    return sessionReservedDragons ? JSON.parse(sessionReservedDragons) : [];
-  });
+  const [reservedDragonIds, setReservedDragonIds] = useState([]);
 
   useEffect(() => {
     dispatch(fetchDragons());
+    const sessionReservedDragonIds = JSON.parse(sessionStorage.getItem('reservedDragons') || '[]');
+    setReservedDragonIds(sessionReservedDragonIds);
   }, [dispatch]);
 
   const handleReserveDragon = (id) => {
-    setReservedDragons([...reservedDragons, id]);
-
     dispatch(reserveDragon({ id }));
-
-    sessionStorage.setItem('reservedDragons', JSON.stringify([...reservedDragons, id]));
+    const updatedReservedDragonIds = [...reservedDragonIds, id];
+    setReservedDragonIds(updatedReservedDragonIds);
+    sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragonIds));
   };
 
   const handleCancelReservation = (id) => {
-    const updatedReservedDragons = reservedDragons.filter((dragonId) => dragonId !== id);
-    setReservedDragons(updatedReservedDragons);
     dispatch(cancelDragonReservation({ id }));
-    sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragons));
+    const updatedReservedDragonIds = reservedDragonIds.filter((dragonId) => dragonId !== id);
+    setReservedDragonIds(updatedReservedDragonIds);
+    sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragonIds));
   };
 
   return (
@@ -50,7 +47,7 @@ function Dragons() {
                 Description:
                 {dragon.description}
               </p>
-              {(dragon.reserved || reservedDragons.includes(dragon.id)) ? (
+              {dragon.reserved ? (
                 <button type="button" onClick={() => handleCancelReservation(dragon.id)}>Cancel Reservation</button>
               ) : (
                 <button type="button" onClick={() => handleReserveDragon(dragon.id)}>Reserve</button>

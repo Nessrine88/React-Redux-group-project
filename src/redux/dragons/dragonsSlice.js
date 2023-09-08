@@ -6,7 +6,7 @@ const baseUrl = 'https://api.spacexdata.com/v4/dragons';
 export const fetchDragons = createAsyncThunk('dragons/fetchDragons', async () => {
   try {
     const response = await axios.get(baseUrl);
-    return response.data;
+    return response.data.map((dragon) => ({ ...dragon, reserved: false }));
   } catch (error) {
     throw new Error('Failed to fetch dragons');
   }
@@ -22,13 +22,17 @@ const dragonsSlice = createSlice({
   reducers: {
     reserveDragon: (state, action) => {
       const { id } = action.payload;
-      state.dragons = state.dragons.map((dragon) => (dragon.id === id
-        ? { ...dragon, reserved: true } : dragon));
+      const dragon = state.dragons.find((dragon) => dragon.id === id);
+      if (dragon) {
+        dragon.reserved = true;
+      }
     },
     cancelDragonReservation: (state, action) => {
       const { id } = action.payload;
-      state.dragons = state.dragons.map((dragon) => (dragon.id === id
-        ? { ...dragon, reserved: false } : dragon));
+      const dragon = state.dragons.find((dragon) => dragon.id === id);
+      if (dragon) {
+        dragon.reserved = false;
+      }
     },
   },
   extraReducers: (builder) => {
