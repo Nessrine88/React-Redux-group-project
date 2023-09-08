@@ -5,33 +5,33 @@ import './Navigation.css';
 
 function Navigation() {
   return (
-    <div className="container">
+    <div className="nav-container">
       <div className="logo">
-        <img src={logo} alt="" />
-        <h2>Space Travelers&apos; Hub</h2>
+        <img src={logo} alt="Space Travelers Hub" className="logo-img" />
+        <h2 className="logo-text">Space Travelers Hub</h2>
       </div>
-      <div className="list">
-        <li>
-          <NavLink to="/rockets">
+      <ul className="nav-list">
+        <li className="nav-item">
+          <NavLink to="/rockets" className="nav-link">
             Rockets
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/Mission">
+        <li className="nav-item">
+          <NavLink to="/Mission" className="nav-link">
             Mission
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/Dragons">
+        <li className="nav-item">
+          <NavLink to="/Dragons" className="nav-link">
             Dragons
           </NavLink>
         </li>
-        <li className="profile">
-          <NavLink to="/myprofile">
+        <li className="nav-item profile">
+          <NavLink to="/myprofile" className="nav-link">
             My Profile
           </NavLink>
         </li>
-      </div>
+      </ul>
     </div>
   );
 }

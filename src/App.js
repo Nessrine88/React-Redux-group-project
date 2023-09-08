@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Routes, Route, BrowserRouter, Navigate,
 } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Navigation from './components/Navigation/Navigation';
 import Myprofile from './components/MyProfile/Myprofile';
 import Rockets from './components/Rockets/Rockets';
 import Mission from './components/Mission/Mission';
 import Dragons from './components/Dragon/Dragons';
+import { fetchDragons } from './redux/dragons/dragonsSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDragons());
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <div className="App">

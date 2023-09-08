@@ -1,25 +1,25 @@
-.MissionTable {
+.missiontable {
   border-collapse: collapse;
   padding: 2rem;
   margin: 2rem;
 }
 
-.MissionTable td {
+.missiontable td {
   padding: 1rem;
   border: 1px solid gainsboro;
 }
 
-.MissionTable th {
+.missiontable th {
   text-align: left;
   border: 1px solid gainsboro;
   padding: 0.5rem;
 }
 
-.MissionDescription {
+.missiondescription {
   width: 60%;
 }
 
-.MissionName {
+.missionname {
   width: 15%;
 }
 
@@ -54,6 +54,6 @@ td .active-member-button {
 
 td .leave-mission-button {
   border: 1px solid red;
-  color: rgb(255, 0, 0);
+  color: rgb(255 0 0);
   padding: 0.5rem;
 }

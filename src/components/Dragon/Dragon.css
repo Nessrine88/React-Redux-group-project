@@ -1,10 +1,72 @@
-img.dragon {
+
+.dragons-container {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.dragons-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.dragons-list {
+  list-style: none;
+  padding: 0;
+}
+
+.dragon-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dragon-image {
   width: 240px;
   height: 240px;
   margin-right: 20px;
 }
 
-li.dragonLi {
-  display: flex;
-  align-items: flex-end;
+.dragon-details {
+  flex: 1;
+}
+
+.dragon-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dragon-type,
+.dragon-description {
+  margin-bottom: 5px;
+}
+
+.reserve-button,
+.cancel-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+}
+
+.reserve-button:hover,
+.cancel-button:hover {
+  background-color: #0056b3;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
 }
