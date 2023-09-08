@@ -3,10 +3,11 @@ import axios from 'axios';
 
 const baseUrl = 'https://api.spacexdata.com/v4/dragons';
 
+// Async action to fetch dragons
 export const fetchDragons = createAsyncThunk('dragons/fetchDragons', async () => {
   try {
     const response = await axios.get(baseUrl);
-    return response.data.map((dragon) => ({ ...dragon, reserved: false }));
+    return response.data;
   } catch (error) {
     throw new Error('Failed to fetch dragons');
   }
@@ -14,6 +15,7 @@ export const fetchDragons = createAsyncThunk('dragons/fetchDragons', async () =>
 
 const initialState = {
   dragons: [],
+  reservedDragons: {}, // Track reserved dragons
 };
 
 const dragonsSlice = createSlice({
@@ -22,17 +24,13 @@ const dragonsSlice = createSlice({
   reducers: {
     reserveDragon: (state, action) => {
       const { id } = action.payload;
-      const dragon = state.dragons.find((dragon) => dragon.id === id);
-      if (dragon) {
-        dragon.reserved = true;
-      }
+      state.dragons = state.dragons.map((dragon) => (dragon.id === id ? { ...dragon, reserved: true } : dragon));
+      state.reservedDragons[id] = true; // Mark dragon as reserved
     },
     cancelDragonReservation: (state, action) => {
       const { id } = action.payload;
-      const dragon = state.dragons.find((dragon) => dragon.id === id);
-      if (dragon) {
-        dragon.reserved = false;
-      }
+      state.dragons = state.dragons.map((dragon) => (dragon.id === id ? { ...dragon, reserved: false } : dragon));
+      state.reservedDragons[id] = false; // Mark dragon as not reserved
     },
   },
   extraReducers: (builder) => {
@@ -44,6 +42,8 @@ const dragonsSlice = createSlice({
 
 export const { reserveDragon, cancelDragonReservation } = dragonsSlice.actions;
 
-export default dragonsSlice.reducer;
-
+// Selectors
 export const selectDragons = (state) => state.dragons.dragons;
+export const selectReservedDragons = (state) => state.dragons.reservedDragons;
+
+export default dragonsSlice.reducer;

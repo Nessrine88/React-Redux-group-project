@@ -1,32 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  fetchDragons, reserveDragon, cancelDragonReservation, selectDragons,
+  fetchDragons,
+  reserveDragon,
+  cancelDragonReservation,
+  selectDragons,
+  selectReservedDragons, // Add this import
 } from '../../redux/dragons/dragonsSlice';
 import './Dragon.css';
 
 function Dragons() {
   const dragons = useSelector(selectDragons);
+  const reservedDragons = useSelector(selectReservedDragons); // Get reserved dragons from Redux store
   const dispatch = useDispatch();
-  const [reservedDragonIds, setReservedDragonIds] = useState([]);
 
   useEffect(() => {
     dispatch(fetchDragons());
-    const sessionReservedDragonIds = JSON.parse(sessionStorage.getItem('reservedDragons') || '[]');
-    setReservedDragonIds(sessionReservedDragonIds);
+  }, [dispatch]);
+
+  useEffect(() => {
+    // Load reserved dragon IDs from sessionStorage on component mount
+    const reservedDragonIds = JSON.parse(sessionStorage.getItem('reservedDragons') || '[]');
+    reservedDragonIds.forEach((id) => dispatch(reserveDragon({ id })));
   }, [dispatch]);
 
   const handleReserveDragon = (id) => {
     dispatch(reserveDragon({ id }));
-    const updatedReservedDragonIds = [...reservedDragonIds, id];
-    setReservedDragonIds(updatedReservedDragonIds);
-    sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragonIds));
+
+    // Update sessionStorage with the reserved dragon ID
+    const reservedDragonIds = JSON.parse(sessionStorage.getItem('reservedDragons') || '[]');
+    if (!reservedDragonIds.includes(id)) {
+      reservedDragonIds.push(id);
+      sessionStorage.setItem('reservedDragons', JSON.stringify(reservedDragonIds));
+    }
   };
 
   const handleCancelReservation = (id) => {
     dispatch(cancelDragonReservation({ id }));
+
+    // Update sessionStorage to remove the canceled reservation
+    const reservedDragonIds = JSON.parse(sessionStorage.getItem('reservedDragons') || '[]');
     const updatedReservedDragonIds = reservedDragonIds.filter((dragonId) => dragonId !== id);
-    setReservedDragonIds(updatedReservedDragonIds);
     sessionStorage.setItem('reservedDragons', JSON.stringify(updatedReservedDragonIds));
   };
 
@@ -47,10 +61,14 @@ function Dragons() {
                 Description:
                 {dragon.description}
               </p>
-              {dragon.reserved ? (
-                <button type="button" onClick={() => handleCancelReservation(dragon.id)}>Cancel Reservation</button>
+              {reservedDragons[dragon.id] ? (
+                <button type="button" onClick={() => handleCancelReservation(dragon.id)}>
+                  Cancel Reservation
+                </button>
               ) : (
-                <button type="button" onClick={() => handleReserveDragon(dragon.id)}>Reserve</button>
+                <button type="button" onClick={() => handleReserveDragon(dragon.id)}>
+                  Reserve
+                </button>
               )}
             </div>
           </li>
