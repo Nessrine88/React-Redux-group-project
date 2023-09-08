@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import '@testing-library/jest-dom/extend-expect';
-import { jest } from '@jest/globals'; // Asegúrate de importar jest.
+import { jest } from '@jest/globals';
 import Rockets from './Rockets';
 
 const mockStore = configureStore();
@@ -91,6 +91,4 @@ describe('Rockets Component', () => {
     expect(screen.getByAltText('Falcon 1')).toHaveAttribute('src', 'http://image1.com');
     expect(screen.getByAltText('Falcon 2')).toHaveAttribute('src', 'http://image2.com');
   });
-
-  // Aquí puedes seguir agregando más pruebas según tus necesidades.
 });
