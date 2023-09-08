@@ -1,10 +1,11 @@
 .nav-container {
-  background-color: #333;
+  background-color: #ceb0b0;
   color: #fff;
   padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 10px;
 }
 
 .logo {
