@@ -7,7 +7,7 @@ function Navigation() {
   return (
     <div className="nav-container">
       <div className="logo">
-        <img src={logo} alt="" className="logo-img" />
+        <img src={logo} alt="Space Travelers Hub" className="logo-img" />
         <h2 className="logo-text">Space Travelers Hub</h2>
       </div>
       <ul className="nav-list">
