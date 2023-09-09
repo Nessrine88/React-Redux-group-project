@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Dragons component 1`] = `
+<DocumentFragment>
+  <div
+    class="dragons-container"
+  >
+    <h1
+      class="dragons-header"
+    >
+      Dragons
+    </h1>
+    <ul
+      class="dragons-list"
+    />
+  </div>
+</DocumentFragment>
+`;

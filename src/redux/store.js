@@ -10,7 +10,7 @@ const store = configureStore({
     rockets: rocketsReducer,
     dragons: dragonReducer,
   },
-  middleware: [...applyMiddleware(), logger],
+  middleware: (applyMiddleware) => [...applyMiddleware(), logger],
 });
 
 export default store;
