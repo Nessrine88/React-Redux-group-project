@@ -1,0 +1,59 @@
+.missiontable {
+  border-collapse: collapse;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.missiontable td {
+  padding: 1rem;
+  border: 1px solid gainsboro;
+}
+
+.missiontable th {
+  text-align: left;
+  border: 1px solid gainsboro;
+  padding: 0.5rem;
+}
+
+.missiondescription {
+  width: 60%;
+}
+
+.missionname {
+  width: 15%;
+}
+
+td .not-a-member-button {
+  border: none;
+  color: #fff;
+  background-color: gray;
+  border-radius: 5px;
+}
+
+td .join-mission-button {
+  border: solid 1px gray;
+  color: gray;
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
+.gray-background {
+  background-color: #f0f0f0;
+}
+
+.white-background {
+  background-color: #fff;
+}
+
+td .active-member-button {
+  background-color: #2a6dfd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+td .leave-mission-button {
+  border: 1px solid red;
+  color: rgb(255 0 0);
+  padding: 0.5rem;
+}
