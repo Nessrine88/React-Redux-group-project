@@ -1,4 +1,4 @@
-import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import Missionreducer from './Mission/MissionSlice';
 import rocketsReducer from './rockets/rocketsSlice';
@@ -10,7 +10,7 @@ const store = configureStore({
     rockets: rocketsReducer,
     dragons: dragonReducer,
   },
-  middleware: (applyMiddleware) => [...applyMiddleware(), logger],
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 export default store;
