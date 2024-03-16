@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nessrine88.github.io/React-redux-Group-Project",
   "dependencies": {
     "@jest/globals": "^29.6.4",
     "@reduxjs/toolkit": "^1.9.5",
