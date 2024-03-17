@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/React-redux-Group-Project/static/css/main.2dd51e11.css",
+    "main.js": "/React-redux-Group-Project/static/js/main.3c9c1f46.js",
+    "static/media/planet.png": "/React-redux-Group-Project/static/media/planet.c1cd168acba305496d99.png",
+    "index.html": "/React-redux-Group-Project/index.html",
+    "main.2dd51e11.css.map": "/React-redux-Group-Project/static/css/main.2dd51e11.css.map",
+    "main.3c9c1f46.js.map": "/React-redux-Group-Project/static/js/main.3c9c1f46.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2dd51e11.css",
+    "static/js/main.3c9c1f46.js"
+  ]
+}
