@@ -22,11 +22,11 @@ function App() {
       <div className="App">
         <Navigation />
         <Routes>
-          <Route path="/" element={<Navigate to="/Rockets" replace />} />
-          <Route path="/Myprofile" element={<Myprofile />} />
-          <Route path="/Mission" element={<Mission />} />
-          <Route path="/Rockets" element={<Rockets />} />
-          <Route path="/Dragons" element={<Dragons />} />
+          <Route path="/" element={<Navigate to="/rockets" replace />} />
+          <Route path="/myprofile" element={<Myprofile />} />
+          <Route path="/mission" element={<Mission />} />
+          <Route path="/rockets" element={<Rockets />} />
+          <Route path="/dragons" element={<Dragons />} />
         </Routes>
       </div>
     </BrowserRouter>
